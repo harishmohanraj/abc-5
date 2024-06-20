@@ -1,0 +1,21 @@
+name: Pipeline
+on: [push, workflow_dispatch]
+
+jobs:
+    unit_test:
+      name: Run tests and verify build
+      runs-on: ubuntu-latest
+      permissions:
+          contents: read
+          packages: write
+      steps:
+          - name: Checkout repository
+            uses: actions/checkout@v4
+          - uses: actions/setup-node@v3
+            with:
+              node-version: 20
+
+          - uses: 8BitJonny/gh-get-current-pr@3.0.0
+            id: PR
+          - run: echo "Your PR number is ${{ steps.PR.outputs.number }} and its JSON is ${{ steps.PR.outputs.pr }}"
+
