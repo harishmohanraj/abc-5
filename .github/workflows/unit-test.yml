@@ -1,8 +1,7 @@
 name: Pipeline
 on:
-  workflow_run:
-    branches:
-      - main
+  push:
+    branches: [ "main"]
   # or manually
   workflow_dispatch:
 
