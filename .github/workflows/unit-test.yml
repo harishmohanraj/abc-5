@@ -11,9 +11,6 @@ jobs:
       steps:
           - name: Checkout repository
             uses: actions/checkout@v4
-          - uses: actions/setup-node@v3
-            with:
-              node-version: 20
 
           - uses: 8BitJonny/gh-get-current-pr@3.0.0
             id: PR
