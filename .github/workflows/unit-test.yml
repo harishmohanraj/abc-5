@@ -1,5 +1,10 @@
 name: Pipeline
-on: [push, workflow_dispatch]
+on:
+  workflow_run:
+    branches:
+      - main
+  # or manually
+  workflow_dispatch:
 
 jobs:
     unit_test:
