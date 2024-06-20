@@ -17,5 +17,13 @@ jobs:
           - run: |
               echo "Your PR number is ${{ steps.PR.outputs.number }} and its JSON is ${{ steps.PR.outputs.pr }}"
               echo "Your PR title is ${{ steps.PR.outputs.pr_title }}"
-              echo "Your PR body is ${{ steps.PR.outputs.pr_body }}"
+
+              if [[ "${{ steps.PR.outputs.pr_title }}" == "Add Fly.io configuration files" ]]; then
+                echo "is_pr_for_setup=true" >> $GITHUB_OUTPUT
+              else
+                echo "is_pr_for_setup=false" >> $GITHUB_OUTPUT
+              fi
+              echo "The value of is_pr_for_setup is:"
+              cat $GITHUB_OUTPUT
+            shell: bash
 
